@@ -26,11 +26,14 @@ function App() {
       <Routes>
         <Route path="/" element={<PokemonList />} />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
-        <Route path="/pokemonSearch" element={<PokemonSearch/>} />
+        <Route path="/pokemonSearch" element={<PokemonSearch />} />
 
-        <Route path="*" element={<h1>Erro</h1>}/>
+        <Route path="*" element={<h1>Erro</h1>} />
       </Routes>
     </Router>
+
+
+
   );
 }
 

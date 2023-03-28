@@ -3,6 +3,9 @@ import { Card } from 'react-bootstrap';
 import axios from 'axios';
 import PokemonStats from './PokemonStats';
 import './PokemonSearch.css'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const urlBase = 'https://pokeapi.co/api/v2/pokemon';
 
@@ -17,7 +20,7 @@ function PokemonSearch() {
         setPokemons(result.data);
         setLoading(false);
       })
-      
+
   }, []);
 
   function search() {
@@ -25,26 +28,38 @@ function PokemonSearch() {
       .then((result) => {
         setPokemons(result.data);
         setLoading(false);
+        toast.success("Pokemon encontrado!");
       })
       .catch((error) => {
         console.log(error);
         setLoading(true);
+        toast.warn("Escreva um nome de pokemon válido!");
+
+
       });
 
   }
 
   return (
     <div className="teste">
-      <div>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value.toLowerCase())}
-        placeholder="Nome do pokemon"
+      <ToastContainer
+        autoClose={5000}
+        position="top-right"
       />
-      <button type="submit" onClick={search}>
-        Buscar
-      </button>
+
+
+
+
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value.toLowerCase())}
+          placeholder="Nome do pokemon"
+        />
+        <button type="submit" onClick={search}>
+          Buscar
+        </button>
       </div>
 
       {pokemons && (
