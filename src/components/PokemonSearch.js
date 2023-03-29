@@ -31,9 +31,7 @@ function PokemonSearch() {
         toast.success("Pokemon encontrado!");
       })
       .catch((error) => {
-        console.log(error);
-        setLoading(true);
-        toast.warn("Escreva um nome de pokemon válido!");
+        toast.warn("Digite um nome de pokemon válido!");
 
 
       });
@@ -47,17 +45,14 @@ function PokemonSearch() {
         position="top-right"
       />
 
-
-
-
-      <div>
+      <div className='search'> 
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value.toLowerCase())}
           placeholder="Nome do pokemon"
         />
-        <button type="submit" onClick={search}>
+        <button id="procurar" type="submit" onClick={search}>
           Buscar
         </button>
       </div>
